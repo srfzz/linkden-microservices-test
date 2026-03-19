@@ -8,11 +8,10 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostRequestDto {
     @NotBlank
     @JsonDeserialize(using = HtmlSanitizerDeserializer.class)
