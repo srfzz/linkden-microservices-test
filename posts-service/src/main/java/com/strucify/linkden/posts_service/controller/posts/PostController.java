@@ -55,4 +55,11 @@ public class PostController {
         postService.deletePost(postId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/users/{userId}/allPosts")
+    public ResponseEntity<ApiResponse<List<PostsResponseDto>>> getAllPostsByUserId(@PathVariable("userId") Long userId) {
+        log.info("Request to get all posts by userId : {}", userId);
+        List<PostsResponseDto> postsResponseDto= postService.findAllByUserId(userId);
+        return ResponseEntity.ok().body(ApiResponse.success(postsResponseDto,"success",HttpStatus.OK));
+    }
 }

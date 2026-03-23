@@ -84,4 +84,11 @@ public class PostServiceImpl implements PostService {
     public Boolean existsById(Long id) {
         return postRepository.existsById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PostsResponseDto> findAllByUserId(Long id) {
+        List<PostEntity> postlist=postRepository.findAllByUserId(id);
+        return postlist.stream().map(postEntity -> modelMapper.map(postEntity,PostsResponseDto.class)).collect(Collectors.toList());
+    }
 }

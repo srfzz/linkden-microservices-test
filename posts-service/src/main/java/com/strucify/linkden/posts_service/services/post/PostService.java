@@ -16,4 +16,5 @@ public interface PostService {
     List<PostsResponseDto> findAll();
     void deletePost(Long id);
     Boolean existsById(Long id);
+    List<PostsResponseDto> findAllByUserId(Long id);
 }
